@@ -1,0 +1,17 @@
+### Python template
+
+# Environments
+.env
+.venv
+env/
+venv/
+
+.vscode/
+.idea/
+logs/
+
+db.sqlite3
+*.whl
+
+
+

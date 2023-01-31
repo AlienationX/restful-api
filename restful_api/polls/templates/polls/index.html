@@ -1,0 +1,16 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'polls/style.css' %}">
+
+{% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+        {# "/polls/{{ question.id }}/" 是硬编码，"{% url 'detail' question.id %}" 可以通过polls/urls修改path路径，detail和name绑定 #}
+        {# polls:detail是命名空间，否则多个应用存在name=detail的时候会存在问题 #}
+        {#<li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li>#}
+        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
